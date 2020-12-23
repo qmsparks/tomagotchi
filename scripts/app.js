@@ -20,14 +20,14 @@ class Tomagotchi {
     }
 
     beginLife() {
-        this.aging = this.increaseStat('age', 10);
-        this.gettingSleepy = this.increaseStat('sleepiness', 6);
-        this.gettingHungry = this.increaseStat('hunger', 2);
-        this.gettingBored = this.increaseStat('boredom', 1);
+        this.aging = this.setStatInterval('age', 10);
+        this.gettingSleepy = this.setStatInterval('sleepiness', 6);
+        this.gettingHungry = this.setStatInterval('hunger', 2);
+        this.gettingBored = this.setStatInterval('boredom', 1);
     }
 
 
-    increaseStat(statName, numberOfMinutes){
+    setStatInterval(statName, numberOfMinutes){
         return setInterval(() => {
             this[statName]++;
         }, (numberOfMinutes*minute))
@@ -57,7 +57,8 @@ class Game {
         this.pet.beginLife();
         this.updateInfo();
         this.statInterval = setInterval(() => {
-            this.updateInfo()
+            this.updateInfo();
+            this.deathCheck();
         }, minute)
         this.render();
     }
@@ -95,10 +96,17 @@ class Game {
 
     turnLightsOn() {
         clearInterval(this.napTime);
-        this.pet.gettingSleepy = this.pet.increaseStat('sleepiness', 6);
+        this.pet.gettingSleepy = this.pet.setStatInterval('sleepiness', 6);
+    }
+
+    deathCheck() {
+        if (this.pet.hunger >= 10 || this.pet.sleepiness >=10 || this.pet.boredom >=10) {
+            return this.end();
+        }
     }
 
     end() {
+        console.log('Ah nuts, dead pet');
         clearInterval(this.statInterval);
         this.pet.die();
     }
@@ -122,15 +130,12 @@ $('#light-btn').on('click', () => {
     game.handleLights();
 });
 
-
-
-// TODO actually handle these
 $('#feed-btn').on('click', () => {
-    console.log('Yummy yummy');
     game.pet.decreaseStat('hunger');
     game.updateInfo();
 });
 
 $('#play-btn').on('click', () => {
-	console.log('Be! Less! Bored!');
+    game.pet.decreaseStat('boredom');
+    game.updateInfo();
 });
