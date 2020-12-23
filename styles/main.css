@@ -1,3 +1,34 @@
 .hidden {
     display: none;
 }
+
+#pet {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+
+.ghost {
+    animation-name: idleGhost;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes idleGhost {
+    0% {
+        background-image: url('../images/ghost/idle/frame1.png');
+    }
+    25% {
+        background-image: url('../images/ghost/idle/frame2.png');
+    }
+    50%{
+        background-image: url('../images/ghost/idle/frame3.png');
+    }
+    75%{
+        background-image: url('../images/ghost/idle/frame4.png');
+    }
+    100% {
+        background-image: url('../images/ghost/idle/frame1.png');
+    }
+}

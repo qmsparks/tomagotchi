@@ -4,7 +4,7 @@ class Tomagotchi {
     constructor(configObj) {
         // ANCHOR base tomagotchi stats
         this.name = configObj.name;
-        this.image = configObj.image;
+        this.type = configObj.type;
 
         this.age = 0;
         this.hunger = 1;
@@ -58,7 +58,8 @@ class Tomagotchi {
 
 const pet = new Tomagotchi({
     name: 'Brick',
-    image: '../images/ghost/idle/frame1.png'
+    type: 'ghost'
 })
 
-console.log(pet);
+$('#pet').addClass(pet.type);
+
