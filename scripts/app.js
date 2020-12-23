@@ -1,7 +1,11 @@
+// ANCHOR global variables
 const minute = 60000;
+let game;
+let statInterval;
+const $petSprite = $('#pet');
+const $display = $('#display');
 
 // ANCHOR game classes
-
 class Tomagotchi {
     constructor(configObj) {
         // ANCHOR base tomagotchi stats
@@ -30,6 +34,7 @@ class Tomagotchi {
     }
 
     decreaseStat(statName) {
+        // TODO handle logic to keep this number from going negative
         this[statName]--;
     }
 
@@ -48,17 +53,27 @@ class Game {
         this.lightsOn = true;
     }
 
-    sleepyTime() {
+    handleLights() {
+        this.lightsOn = !this.lightsOn;
+        $display.toggleClass('dark');
+        $petSprite.toggleClass('sleeping');
+        this.lightsOn ? this.turnLightsOn() : this.turnLightsOff();
+    }
+
+    turnLightsOff() {
+        clearInterval(this.pet.gettingSleepy);
         this.napTime = setInterval(() => {
             this.pet.decreaseStat('sleepiness');
-        }, (3*minute))
+        }, (3*minute));
+    }
+
+    turnLightsOn() {
+        clearInterval(this.napTime);
+        this.pet.gettingSleepy = this.pet.increaseStat('sleepiness', 6);
     }
 
 }
 
-let game;
-let statInterval;
-const $petSprite = $('#pet');
 
 
 // ANCHOR dom manipulation
@@ -98,9 +113,10 @@ $('#start-btn').on('click', (e) => {
 })
 
 // TODO actually handle these
+
+
 $('#light-btn').on('click', () => {
-    console.log('Toggle lights');
-    
+    game.handleLights();
 });
 
 $('#feed-btn').on('click', () => {
