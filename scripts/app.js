@@ -43,7 +43,7 @@ class Tomagotchi {
         clearInterval(this.aging);
 		clearInterval(this.gettingHungry);
 		clearInterval(this.gettingSleepy);
-		clearInterval(this.gettingBored);
+        clearInterval(this.gettingBored);
     }
 }
 
@@ -53,17 +53,43 @@ class Game {
         this.lightsOn = true;
     }
 
+    begin() {
+        this.pet.beginLife();
+        this.updateInfo();
+        this.statInterval = setInterval(() => {
+            this.updateInfo()
+        }, minute)
+        this.render();
+    }
+
+    render() {
+        $('#name').text(game.pet.name);
+        $('#game-info').toggleClass('hidden');
+        $('#buttons').toggleClass('hidden');
+        $('#stats').toggleClass('hidden');
+        $petSprite.addClass(this.pet.type);
+    }
+
+    updateInfo() {
+        console.log('Updating stats');
+        $('#age').text(this.pet.age);
+        $('#hunger').text(this.pet.hunger);
+        $('#sleepiness').text(this.pet.sleepiness);
+        $('#boredom').text(this.pet.boredom);
+    }
+
     handleLights() {
         this.lightsOn = !this.lightsOn;
         $display.toggleClass('dark');
         $petSprite.toggleClass('sleeping');
         this.lightsOn ? this.turnLightsOn() : this.turnLightsOff();
     }
-
+    // TODO going to sleep should halt the boredom clock, as well as slowing down the hunger
     turnLightsOff() {
         clearInterval(this.pet.gettingSleepy);
         this.napTime = setInterval(() => {
             this.pet.decreaseStat('sleepiness');
+            this.updateInfo();
         }, (3*minute));
     }
 
@@ -72,29 +98,11 @@ class Game {
         this.pet.gettingSleepy = this.pet.increaseStat('sleepiness', 6);
     }
 
-}
+    end() {
+        clearInterval(this.statInterval);
+        this.pet.die();
+    }
 
-
-
-// ANCHOR dom manipulation
-
-// ANCHOR helper functions
-
-const renderGame = function() {
-    $('#name').text(game.pet.name);
-    $('#game-info').toggleClass('hidden');
-    $('#buttons').toggleClass('hidden');
-    $('#stats').toggleClass('hidden');
-    game.pet.beginLife();
-    updateInfo();
-}
-
-const updateInfo = function() {
-    console.log('Updating stats');
-    $('#age').text(game.pet.age);
-	$('#hunger').text(game.pet.hunger);
-	$('#sleepiness').text(game.pet.sleepiness);
-	$('#boredom').text(game.pet.boredom);
 }
 
 
@@ -106,21 +114,21 @@ $('#start-btn').on('click', (e) => {
         name: $('#name-input').val(),
         type: 'deer'
     })
-    
-    $petSprite.addClass(game.pet.type);
-    renderGame();
-    statInterval = setInterval(updateInfo, minute);
+    game.begin();
 })
-
-// TODO actually handle these
 
 
 $('#light-btn').on('click', () => {
     game.handleLights();
 });
 
+
+
+// TODO actually handle these
 $('#feed-btn').on('click', () => {
-	console.log('Yummy yummy');
+    console.log('Yummy yummy');
+    game.pet.decreaseStat('hunger');
+    game.updateInfo();
 });
 
 $('#play-btn').on('click', () => {
