@@ -1,9 +1,8 @@
 // ANCHOR global variables
 const minute = 60000;
-let game;
-let statInterval;
 const $petSprite = $('#pet');
 const $display = $('#display');
+let game;
 
 // ANCHOR game classes
 class Tomagotchi {
@@ -21,11 +20,20 @@ class Tomagotchi {
 
     beginLife() {
         this.aging = this.setStatInterval('age', 10);
+        this.setBaseStats();
+    }
+
+    setBaseStats() {
         this.gettingSleepy = this.setStatInterval('sleepiness', 6);
         this.gettingHungry = this.setStatInterval('hunger', 2);
         this.gettingBored = this.setStatInterval('boredom', 1);
     }
 
+    clearBaseStats() {
+        clearInterval(this.gettingHungry);
+		clearInterval(this.gettingSleepy);
+        clearInterval(this.gettingBored);
+    }
 
     setStatInterval(statName, numberOfMinutes){
         return setInterval(() => {
@@ -41,9 +49,7 @@ class Tomagotchi {
     die() {
         this.isAlive = false;
         clearInterval(this.aging);
-		clearInterval(this.gettingHungry);
-		clearInterval(this.gettingSleepy);
-        clearInterval(this.gettingBored);
+        this.clearBaseStats();
     }
 }
 
@@ -85,9 +91,11 @@ class Game {
         $petSprite.toggleClass('sleeping');
         this.lightsOn ? this.turnLightsOn() : this.turnLightsOff();
     }
-    // TODO going to sleep should halt the boredom clock, as well as slowing down the hunger
+
     turnLightsOff() {
-        clearInterval(this.pet.gettingSleepy);
+        this.pet.clearBaseStats();
+        this.pet.setStatInterval('hunger', 4);
+
         this.napTime = setInterval(() => {
             this.pet.decreaseStat('sleepiness');
             this.updateInfo();
@@ -96,7 +104,8 @@ class Game {
 
     turnLightsOn() {
         clearInterval(this.napTime);
-        this.pet.gettingSleepy = this.pet.setStatInterval('sleepiness', 6);
+        this.pet.clearBaseStats();
+        this.pet.setBaseStats();
     }
 
     deathCheck() {
@@ -120,11 +129,10 @@ $('#start-btn').on('click', (e) => {
     e.preventDefault();
     game = new Game({
         name: $('#name-input').val(),
-        type: 'deer'
+        type: $('.active').attr('id')
     })
     game.begin();
 })
-
 
 $('#light-btn').on('click', () => {
     game.handleLights();

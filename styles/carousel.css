@@ -1,0 +1,23 @@
+#carousel-container, #carousel {
+    display: flex;
+    border: 1px solid black;
+}
+
+#game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pet-option {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    display: none;
+}
+
+.active {
+    display: block;
+    margin-left: 20px;
+}
+
