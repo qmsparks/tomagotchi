@@ -16,37 +16,21 @@ class Tomagotchi {
     }
 
     beginLife() {
-        // Tomagotchi ages one 'year' every ten minutes
-        this.aging = setInterval(() => {
-            this.age++;
-        }, (10*minute));
-
-        // Tomagotchi gets hungrier every two minutes
-		this.gettingHungry = setInterval(()=> {
-			this.hunger++;
-		}, 2*minute);
-
-		// Tomagotchi gets sleepier every 6 minutes
-		this.gettingSleepy = setInterval(()=> {
-			this.sleepiness++;
-		}, 6*minute);
-
-		// Tomagotchi gets more bored every minute
-		this.gettingBored = setInterval(()=> {
-			this.boredom++;
-		}, minute);
+        this.aging = this.increaseStat('age', 10);
+        this.gettingSleepy = this.increaseStat('sleepiness', 6);
+        this.gettingHungry = this.increaseStat('hunger', 2);
+        this.gettingBored = this.increaseStat('boredom', 1);
     }
 
-    eat() {
-        this.hunger--;
+
+    increaseStat(statName, numberOfMinutes){
+        return setInterval(() => {
+            this[statName]++;
+        }, (numberOfMinutes*minute))
     }
 
-    sleep() {
-        this.sleepiness--;
-    }
-
-    play() {
-        this.boredom--;
+    decreaseStat(statName) {
+        this[statName]--;
     }
 
     die() {
@@ -66,7 +50,7 @@ class Game {
 
     sleepyTime() {
         this.napTime = setInterval(() => {
-            this.pet.sleep();
+            this.pet.decreaseStat('sleepiness');
         }, (3*minute))
     }
 
@@ -115,7 +99,8 @@ $('#start-btn').on('click', (e) => {
 
 // TODO actually handle these
 $('#light-btn').on('click', () => {
-	console.log('Toggle lights');
+    console.log('Toggle lights');
+    
 });
 
 $('#feed-btn').on('click', () => {
