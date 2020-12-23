@@ -1,0 +1,33 @@
+@keyframes idleDeer {
+    from {
+        background-image: url('../images/deer/idle/frame1.png');
+    }
+    25% {
+        background-image: url('../images/deer/idle/frame2.png');
+        
+    }
+    75% {
+        background-image: url('../images/deer/idle/frame3.png');
+        
+    }
+    to {
+        background-image: url('../images/deer/idle/frame4.png');
+
+    }
+}
+
+@keyframes idleGhost {
+    from {
+        background-image: url('../images/ghost/idle/frame1.png');
+    }
+    25% {
+        background-image: url('../images/ghost/idle/frame2.png');
+    }
+    75%{
+        background-image: url('../images/ghost/idle/frame3.png');
+    }
+    to{
+        background-image: url('../images/ghost/idle/frame4.png');
+    }
+
+}

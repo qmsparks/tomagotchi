@@ -71,9 +71,9 @@ class Game {
 
     render() {
         $('#name').text(game.pet.name);
-        $('#game-info').toggleClass('hidden');
+        $('.game-info').toggleClass('hidden');
         $('#buttons').toggleClass('hidden');
-        $('#stats').toggleClass('hidden');
+        $('.stats').toggleClass('hidden');
         $petSprite.addClass(this.pet.type);
     }
 
