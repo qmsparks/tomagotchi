@@ -58,7 +58,7 @@ class Tomagotchi {
 
 const pet = new Tomagotchi({
     name: 'Brick',
-    type: 'ghost'
+    type: 'deer'
 })
 
 $('#pet').addClass(pet.type);

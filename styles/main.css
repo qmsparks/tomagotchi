@@ -1,11 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .hidden {
     display: none;
 }
 
 #pet {
-    width: 20px;
-    height: 20px;
+    width: 150px;
+    height: 150px;
     background-size: cover;
+}
+
+.deer {
+    animation-name: idleDeer;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite
 }
 
 .ghost {
@@ -13,6 +26,24 @@
     animation-duration: 1s;
     animation-iteration-count: infinite;
 
+}
+
+@keyframes idleDeer {
+    from {
+        background-image: url('../images/deer/idle/frame1.png');
+    }
+    33% {
+        background-image: url('../images/deer/idle/frame2.png');
+        
+    }
+    66% {
+        background-image: url('../images/deer/idle/frame3.png');
+        
+    }
+    to {
+        background-image: url('../images/deer/idle/frame4.png');
+
+    }
 }
 
 @keyframes idleGhost {
