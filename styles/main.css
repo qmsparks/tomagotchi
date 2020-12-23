@@ -23,7 +23,8 @@
 
 .ghost {
     animation-name: idleGhost;
-    animation-duration: 1s;
+    animation-duration: .5s;
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
 
 }
@@ -32,11 +33,11 @@
     from {
         background-image: url('../images/deer/idle/frame1.png');
     }
-    33% {
+    25% {
         background-image: url('../images/deer/idle/frame2.png');
         
     }
-    66% {
+    75% {
         background-image: url('../images/deer/idle/frame3.png');
         
     }
@@ -47,19 +48,17 @@
 }
 
 @keyframes idleGhost {
-    0% {
+    from {
         background-image: url('../images/ghost/idle/frame1.png');
     }
     25% {
         background-image: url('../images/ghost/idle/frame2.png');
     }
-    50%{
+    75%{
         background-image: url('../images/ghost/idle/frame3.png');
     }
-    75%{
+    to{
         background-image: url('../images/ghost/idle/frame4.png');
     }
-    100% {
-        background-image: url('../images/ghost/idle/frame1.png');
-    }
+
 }

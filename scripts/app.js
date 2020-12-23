@@ -1,5 +1,7 @@
 const minute = 60000;
 
+// ANCHOR game classes
+
 class Tomagotchi {
     constructor(configObj) {
         // ANCHOR base tomagotchi stats
@@ -56,10 +58,44 @@ class Tomagotchi {
     }
 }
 
-const pet = new Tomagotchi({
-    name: 'Brick',
-    type: 'deer'
+let pet;
+let statInterval;
+const $petSprite = $('#pet');
+
+
+// ANCHOR dom manipulation
+
+// ANCHOR helper functions
+
+const renderGame = function() {
+    $('#name').text(pet.name);
+    $('#game-info').toggleClass('hidden');
+    $('#buttons').toggleClass('hidden');
+    $('#stats').toggleClass('hidden');
+    pet.beginLife();
+    updateInfo();
+}
+
+const updateInfo = function() {
+    console.log('Updating stats');
+    $('#age').text(pet.age);
+	$('#hunger').text(pet.hunger);
+	$('#sleepiness').text(pet.sleepiness);
+	$('#boredom').text(pet.boredom);
+}
+
+
+// ANCHOR event listeners
+
+$('#start-btn').on('click', (e) => {
+    e.preventDefault();
+
+    pet = new Tomagotchi({
+        name: $('#name-input').val(),
+        type: 'ghost'
+    })
+    
+    $petSprite.addClass(pet.type);
+    renderGame();
+    statInterval = setInterval(updateInfo, minute);
 })
-
-$('#pet').addClass(pet.type);
-
