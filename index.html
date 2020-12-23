@@ -5,12 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- my css -->
     <link rel="stylesheet" href="./styles/main.css">
+    <!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" defer></script>
     <!-- my js -->
-    <script src="./scripts/app.js"></script>
+    <script src="./scripts/app.js" defer></script>
 
     <title>Tomagotchi</title>
 </head>
 <body>
-    
+    <header id="stats" class="hidden">
+        <div id="name"></div>
+
+        <div class="stat">
+            <p>Age</p>
+            <span id="age"></span>
+        </div>
+
+        <div class="stat">
+            <p>Hunger</p>
+            <span id="hunger"></span>
+        </div>
+
+        <div class="stat">
+            <p>Sleepiness</p>
+            <span id="sleepiness"></span>
+        </div>
+
+        <div class="stat">
+            <p>Boredom</p>
+            <span id="boredom"></span>
+        </div>
+    </header>
+
+    <main id="display">
+        <form id="game-info">
+            <input type="text" id="name-input" placeholder="Name Your Pet">
+            <button id="start-btn">Play!</button>
+        </form>
+
+        <div id="pet"></div>
+    </main>
+
+    <footer id="buttons" class="hidden">
+        <button id="feed-btn">Feed</button>
+        <button id="light-btn">Lights</button>
+        <button id="play-btn">Play</button>
+    </footer>
 </body>
 </html>
