@@ -58,7 +58,21 @@ class Tomagotchi {
     }
 }
 
-let pet;
+class Game {
+    constructor(configObj) {
+        this.pet = new Tomagotchi(configObj);
+        this.lightsOn = true;
+    }
+
+    sleepyTime() {
+        this.napTime = setInterval(() => {
+            this.pet.sleep();
+        }, (3*minute))
+    }
+
+}
+
+let game;
 let statInterval;
 const $petSprite = $('#pet');
 
@@ -68,20 +82,20 @@ const $petSprite = $('#pet');
 // ANCHOR helper functions
 
 const renderGame = function() {
-    $('#name').text(pet.name);
+    $('#name').text(game.pet.name);
     $('#game-info').toggleClass('hidden');
     $('#buttons').toggleClass('hidden');
     $('#stats').toggleClass('hidden');
-    pet.beginLife();
+    game.pet.beginLife();
     updateInfo();
 }
 
 const updateInfo = function() {
     console.log('Updating stats');
-    $('#age').text(pet.age);
-	$('#hunger').text(pet.hunger);
-	$('#sleepiness').text(pet.sleepiness);
-	$('#boredom').text(pet.boredom);
+    $('#age').text(game.pet.age);
+	$('#hunger').text(game.pet.hunger);
+	$('#sleepiness').text(game.pet.sleepiness);
+	$('#boredom').text(game.pet.boredom);
 }
 
 
@@ -89,13 +103,25 @@ const updateInfo = function() {
 
 $('#start-btn').on('click', (e) => {
     e.preventDefault();
-
-    pet = new Tomagotchi({
+    game = new Game({
         name: $('#name-input').val(),
-        type: 'ghost'
+        type: 'deer'
     })
     
-    $petSprite.addClass(pet.type);
+    $petSprite.addClass(game.pet.type);
     renderGame();
     statInterval = setInterval(updateInfo, minute);
 })
+
+// TODO actually handle these
+$('#light-btn').on('click', () => {
+	console.log('Toggle lights');
+});
+
+$('#feed-btn').on('click', () => {
+	console.log('Yummy yummy');
+});
+
+$('#play-btn').on('click', () => {
+	console.log('Be! Less! Bored!');
+});
