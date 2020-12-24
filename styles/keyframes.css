@@ -91,3 +91,33 @@
         background-image: url('../images/ghost/walk/frame4.png');
     }
 }
+
+@keyframes walkingPixie {
+    from {
+        background-image: url('../images/pixie/walk/frame1.png');
+    }
+    25% {
+        background-image: url('../images/pixie/walk/frame2.png');
+    }
+    75% {
+        background-image: url('../images/pixie/walk/frame3.png');
+    }
+    to {
+        background-image: url('../images/pixie/walk/frame4.png');
+    }
+}
+
+@keyframes walkingGriffin {
+    from {
+        background-image: url('../images/griffin/walk/frame1.png');
+    }
+    25% {
+        background-image: url('../images/griffin/walk/frame2.png');
+    }
+    75% {
+        background-image: url('../images/griffin/walk/frame3.png');
+    }
+    to {
+        background-image: url('../images/griffin/walk/frame4.png');
+    }
+}

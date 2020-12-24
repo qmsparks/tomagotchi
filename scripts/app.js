@@ -122,7 +122,6 @@ class Game {
 
 }
 
-
 // ANCHOR event listeners
 
 $('#start-btn').on('click', (e) => {

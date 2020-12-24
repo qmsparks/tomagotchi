@@ -89,6 +89,14 @@ input {
     animation-name: idlePixie;
 }
 
+.pixie.walking {
+    animation-name: walkingPixie;
+}
+
 .griffin {
     animation-name: idleGriffin;
+}
+
+.griffin.walking {
+    animation-name: walkingGriffin;
 }

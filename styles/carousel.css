@@ -32,3 +32,8 @@
     display: block;
     position: relative;
 }
+
+#test{
+    width: 150px;
+    height: auto;
+}
