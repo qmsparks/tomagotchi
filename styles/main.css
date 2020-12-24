@@ -59,7 +59,7 @@ input {
     align-items: center;
 }
 
-#pet {
+/* #pet {
     position: relative;
     width: 100px;
     height: 100px;
@@ -67,9 +67,14 @@ input {
     animation-duration: .5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+} */
+
+.selected-pet {
+    width: 100px;
+    height: 100px;
 }
 
-.deer {
+/* .deer {
     animation-name: idleDeer;
 }
 
@@ -99,4 +104,4 @@ input {
 
 .griffin.walking {
     animation-name: walkingGriffin;
-}
+} */
