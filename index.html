@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <!-- keyframes css -->
     <link rel="stylesheet" href="./styles/keyframes.css">
     <!-- carousel css -->
@@ -20,35 +22,40 @@
 </head>
 <body>
     <header class="stats hidden">
-        <div id="name"></div>
+        <h2 id="name"></h2>
 
         <div class="stat">
-            <p>Age</p>
-            <span id="age"></span>
+            <h4>
+                <span id="age"></span> Years Old
+            </h4>
         </div>
 
-        <div class="stat">
-            <p>Hunger</p>
-            <span id="hunger"></span>
-        </div>
-
-        <div class="stat">
-            <p>Sleepiness</p>
-            <span id="sleepiness"></span>
-        </div>
-
-        <div class="stat">
-            <p>Boredom</p>
-            <span id="boredom"></span>
+        <div class="sub-stats">
+            <div class="stat">
+                <p>Hunger</p>
+                <span id="hunger"></span>
+            </div>
+            
+            <div class="stat">
+                <p>Sleepiness</p>
+                <span id="sleepiness"></span>
+            </div>
+            
+            <div class="stat">
+                <p>Boredom</p>
+                <span id="boredom"></span>
+            </div>
         </div>
     </header>
 
     <main id="display">
         <section class="game-info">
             <div id="carousel-container">
-                <button id="back" class="carousel-button">Previous</button>
+                <i id="back" class="carousel-button fas fa-angle-left"></i>
+
                 <div id="carousel"></div>
-                <button id="forward" class="carousel-button">Next</button>
+                
+                <i id="forward" class="carousel-button fas fa-angle-right"></i>
             </div>
 
             <form>
@@ -57,10 +64,12 @@
             </form>
         </section>
 
-        <div id="pet"></div>
+        <div id="pet-container">
+            <div id="pet"></div>
+        </div>
     </main>
 
-    <footer id="buttons" class="hidden">
+    <footer class="buttons hidden">
         <button id="feed-btn">Feed</button>
         <button id="light-btn">Lights</button>
         <button id="play-btn">Play</button>

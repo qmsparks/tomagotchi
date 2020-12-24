@@ -16,20 +16,24 @@ class Carousel {
     }
 
     handleClick(buttonId) {
-        buttonId === forward ? this.forward() : this.back();
+        console.log(buttonId);
+        buttonId === 'forward' ? this.forward() : this.back();
 
         this.setActiveSlide();
     }
 
     forward() {
+        console.log('Move forward');
         if (this.index !== this.spriteArr.length-1) {
             this.index++;
         } else {
             this.index = 0;
         }
+
     }
     
     back() {
+        console.log('Go back');
         if (this.index !== 0) {
             this.index--;
         } else {
@@ -50,5 +54,6 @@ const characterSelect = new Carousel({
 
 $('.carousel-button').on('click', e => {
     const direction = $(e.target).attr('id');
+    console.log('Button hit, go ', direction);
     characterSelect.handleClick(direction);
 })

@@ -1,6 +1,5 @@
 #carousel-container, #carousel {
     display: flex;
-    border: 1px solid black;
 }
 
 .game-info {
@@ -9,15 +8,35 @@
     align-items: center;
 }
 
+
+.carousel-button {
+    position: relative;
+    z-index: 1;
+    font-size: 3rem;
+    top: 100px;
+    margin: 0 20px;
+}
+
+
 .pet-option {
     width: 200px;
     height: 200px;
     background-size: cover;
     display: none;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 .active {
     display: block;
-    margin-left: 20px;
+    position: relative;
 }
 
+.deer.active {
+    left: 23px;
+}
+
+.ghost.active {
+    left: 35px;
+}

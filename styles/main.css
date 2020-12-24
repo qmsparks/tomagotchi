@@ -11,32 +11,86 @@ body {
     align-items: center;
 }
 
-#pet{
-    background-size: cover;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-#pet {
-    width: 100px;
-    height: 100px;
+input {
+    text-align: center;
 }
 
-.deer {
-    animation-name: idleDeer;
-    animation-duration: .5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite
+.stats {
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
-.ghost {
-    animation-name: idleGhost;
-    animation-duration: .5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+.stat {
+    text-align: center;
+}
 
+.sub-stats {
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons {
+    width: 150px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 
 .hidden {
     display: none;
 }
+
+/* ANCHOR sprite styling and animation*/
+
+#pet-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pet {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#pet.ghost {
+    left: 20px;
+}
+
+#pet.deer {
+    left:10px;
+}
+
+.deer {
+    animation-name: idleDeer;
+}
+
+.deer.walking {
+    animation-name:walkingDeer;
+}
+
+.ghost {
+    animation-name: idleGhost;
+}
+
+.ghost.walking{
+    animation-name: walkingGhost;
+}
+
 
