@@ -32,11 +32,3 @@
     display: block;
     position: relative;
 }
-
-.deer.active {
-    left: 23px;
-}
-
-.ghost.active {
-    left: 35px;
-}

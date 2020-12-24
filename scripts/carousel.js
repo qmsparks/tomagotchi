@@ -45,7 +45,7 @@ class Carousel {
 }
 
 const characterSelect = new Carousel({
-    sprites: ['deer', 'ghost']
+    sprites: ['deer', 'ghost', 'pixie', 'griffin']
 })
 
 

@@ -30,6 +30,36 @@
     }
 }
 
+@keyframes idlePixie {
+    from {
+        background-image: url('../images/pixie/idle/frame1.png');
+    }
+    25% {
+        background-image: url('../images/pixie/idle/frame2.png');
+    }
+    75% {
+        background-image: url('../images/pixie/idle/frame3.png');
+    }
+    to {
+        background-image: url('../images/pixie/idle/frame4.png');
+    }
+}
+
+@keyframes idleGriffin {
+    from {
+        background-image: url('../images/griffin/idle/frame1.png');
+    }
+    25% {
+        background-image: url('../images/griffin/idle/frame2.png');
+    }
+    75% {
+        background-image: url('../images/griffin/idle/frame3.png');
+    }
+    to {
+        background-image: url('../images/griffin/idle/frame4.png');
+    }
+}
+
 /* ANCHOR walking animations */
 
 @keyframes walkingDeer {

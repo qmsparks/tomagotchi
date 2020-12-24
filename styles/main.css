@@ -69,20 +69,12 @@ input {
     animation-iteration-count: infinite;
 }
 
-#pet.ghost {
-    left: 20px;
-}
-
-#pet.deer {
-    left:10px;
-}
-
 .deer {
     animation-name: idleDeer;
 }
 
 .deer.walking {
-    animation-name:walkingDeer;
+    animation-name: walkingDeer;
 }
 
 .ghost {
@@ -93,4 +85,10 @@ input {
     animation-name: walkingGhost;
 }
 
+.pixie {
+    animation-name: idlePixie;
+}
 
+.griffin {
+    animation-name: idleGriffin;
+}
