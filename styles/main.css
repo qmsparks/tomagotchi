@@ -44,7 +44,6 @@ input {
     justify-content: space-evenly;
 }
 
-
 .hidden {
     display: none;
 }
@@ -57,51 +56,23 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-/* #pet {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    animation-duration: .5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-} */
 
 .selected-pet {
     width: 100px;
     height: 100px;
 }
 
-/* .deer {
-    animation-name: idleDeer;
+.right {
+    animation-name: moveRight;
+    animation-timing-function: linear;
+    animation-duration: 2s;
 }
 
-.deer.walking {
-    animation-name: walkingDeer;
+.left {
+    animation-name: moveLeft;
+    animation-timing-function: linear;
+    animation-duration: 2s;
 }
-
-.ghost {
-    animation-name: idleGhost;
-}
-
-.ghost.walking{
-    animation-name: walkingGhost;
-}
-
-.pixie {
-    animation-name: idlePixie;
-}
-
-.pixie.walking {
-    animation-name: walkingPixie;
-}
-
-.griffin {
-    animation-name: idleGriffin;
-}
-
-.griffin.walking {
-    animation-name: walkingGriffin;
-} */

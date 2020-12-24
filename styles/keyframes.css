@@ -1,2 +1,18 @@
-/* ANCHOR idle animations */
+@keyframes moveRight {
+    from {
+        left: 0;
+    }
 
+    to {
+        left:100%;
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
